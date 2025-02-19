@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export default function StudentTable(){
+    useEffect(()=>{
+        fetch('http://localhost:8081/students')
+        .then((res)=>res.json())
+        .then((data)=>
+            console.log(data)).catch((err)=>
+            console.log(err.message))
+    },[])
     return(
         <div className="container">
             <h2>Student Records</h2>
             <div className="table-container">
-                {/* <a href="#" className="btn btn-add">Add New Student</a> */}
                 <Link to="/student/create" className="btn btn-add">Add New Student</Link>
                 <table>
                     <thead>
